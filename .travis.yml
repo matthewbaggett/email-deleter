@@ -1,4 +1,7 @@
-language: bash
+language: php
+
+php:
+  - 7.3
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -7,6 +10,7 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
   - composer self-update
   - composer global require -q hirak/prestissimo
+  - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD $DOCKER_REGISTRY
 
 before_script:
   - composer install
