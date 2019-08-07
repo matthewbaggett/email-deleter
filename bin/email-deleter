@@ -17,6 +17,7 @@ foreach($connection->getMailboxes() as $mailbox){
         foreach ($messages as $message) {
             if($message->getDate()->format("U") < strtotime($_SERVER['FROM_BEFORE'])) {
                 echo "  > {$message->getSubject()} on {$message->getDate()->format("Y-m-d")}\n";
+                $message->setFlag("\Deleted");
                 $message->delete();
             }
         }
