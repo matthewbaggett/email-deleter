@@ -1,0 +1,13 @@
+version: '2.4'
+services:
+  email-deleter:
+    image: matthewbaggett/email-deleter
+    build:
+      context: .
+    environment:
+      USERNAME: matthew@baggett.me
+      PASSWORD: ChangeMe
+      IMAP_SERVER: imap.gmail.com
+      IMAP_PORT: 993
+      IMAP_FLAGS: "/imap/ssl/novalidate-cert"
+      FROM_BEFORE: "2016-12-31"

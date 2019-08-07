@@ -1,0 +1,15 @@
+{
+    "name": "geusebio/gmail-unfucker",
+    "authors": [
+        {
+            "name": "Matthew Baggett",
+            "email": "matthew@baggett.me"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "ext-imap": "*",
+        "ddeboer/imap": "^1.8",
+        "kint-php/kint": "^3.2"
+    }
+}

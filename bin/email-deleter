@@ -1,0 +1,27 @@
+#!/usr/bin/php
+<?php
+require(__DIR__ . "/../vendor/autoload.php");
+
+use Ddeboer\Imap\Server;
+
+$server = new Server($_SERVER['IMAP_SERVER'], $_SERVER['IMAP_PORT'], $_SERVER['IMAP_FLAGS']);
+$connection = $server->authenticate($_SERVER['USERNAME'], $_SERVER['PASSWORD']);
+
+foreach($connection->getMailboxes() as $mailbox){
+    echo "Mailbox: {$mailbox->getName()}\n";
+
+    try {
+        $messages = $mailbox->getMessages();
+        echo " > Got " . count($messages) . " messages...\n";
+
+        foreach ($messages as $message) {
+            if($message->getDate()->format("U") < strtotime($_SERVER['FROM_BEFORE'])) {
+                echo "  > {$message->getSubject()} on {$message->getDate()->format("Y-m-d")}\n";
+                $message->delete();
+            }
+        }
+    }catch(\Ddeboer\Imap\Exception\ReopenMailboxException $exception){
+        // Don't care.
+    }
+}
+
