@@ -16,10 +16,10 @@ before_script:
   - composer install
 
 script:
-  - docker-compose build
+  - docker-compose -f build.yml build
 
 after_script:
-  - docker-compose push
+  - docker-compose -f build.yml push
 
 notifications:
   email:

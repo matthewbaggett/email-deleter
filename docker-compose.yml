@@ -2,8 +2,6 @@ version: '2.4'
 services:
   email-deleter:
     image: matthewbaggett/email-deleter
-    build:
-      context: .
     environment:
       USERNAME: matthew@baggett.me
       PASSWORD: ChangeMe
