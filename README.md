@@ -34,7 +34,7 @@ services:
     image: matthewbaggett/email-deleter
     environment:
       USERNAME: matthew@baggett.me
-      PASSWORD: pfsqkmhsubblnhcb
+      PASSWORD: changeme
       IMAP_SERVER: imap.gmail.com
       IMAP_PORT: 993
       IMAP_FLAGS: "/imap/ssl/novalidate-cert"
